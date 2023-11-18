@@ -1,0 +1,19 @@
+import { motion, useScroll, useSpring } from 'framer-motion'
+
+export default function ScrollIndicator() {
+    const { scrollYProgress } = useScroll()
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001,
+    })
+
+    return (
+        <>
+            <motion.div
+                className='fixed top-0 w-screen h-1 lef-0 right-0 z-[100] bg-Green-300 origin-left'
+                style={{ scaleX }}
+            />
+        </>
+    )
+}
